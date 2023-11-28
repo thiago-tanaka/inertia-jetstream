@@ -33,7 +33,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard', [
-            'products' => Product::get(['id', 'name'])
+            'products' => auth()->user()->products()->get(['id', 'name'])
         ]);
     })->name('dashboard');
 });
